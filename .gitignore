@@ -1,0 +1,27 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+config.yaml
+
+# Runtime output
+manifest.jsonl
+OrganizedScreenshots/
+Screenshots整理/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

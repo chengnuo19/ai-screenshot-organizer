@@ -1,0 +1,127 @@
+# Safe public example. Copy to config.yaml before customizing.
+watch_dir: "~/Pictures/Screenshots"
+output_dir: "~/Pictures/OrganizedScreenshots"
+
+# mock is offline and free. Replace this list after adding API keys.
+provider_order: [mock]
+
+providers:
+  mock:
+    adapter: mock
+    base_url: ""
+    model: mock
+    api_key_required: false
+    max_tokens: 0
+
+  openai:
+    adapter: openai_compatible
+    base_url: "https://api.openai.com/v1"
+    model: "gpt-4.1-mini"
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 300
+    request_options:
+      temperature: 0.2
+
+  claude:
+    adapter: anthropic_messages
+    base_url: "https://api.anthropic.com"
+    model: "claude-sonnet-4-6"
+    api_key_env: ANTHROPIC_API_KEY
+    max_tokens: 300
+    request_options:
+      temperature: 0.2
+
+  gemini:
+    adapter: openai_compatible
+    base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+    model: "gemini-2.5-flash"
+    api_key_env: GEMINI_API_KEY
+    max_tokens: 300
+    request_options:
+      temperature: 0.2
+      reasoning_effort: none
+    quota_exhausted_markers:
+      - GenerateRequestsPerDay
+      - per_day
+      - daily
+
+  glm:
+    adapter: openai_compatible
+    base_url: "https://open.bigmodel.cn/api/paas/v4/"
+    model: "glm-4.6v"
+    api_key_env: ZHIPU_API_KEY
+    max_tokens: 300
+    request_options:
+      temperature: 0.2
+      extra_body:
+        thinking:
+          type: disabled
+    quota_exhausted_markers:
+      - 余额
+      - balance
+      - insufficient
+      - "1113"
+      - quota exhausted
+    pricing:
+      input_per_million_cny: 2.0
+      output_per_million_cny: 6.0
+      context_window: 131072
+      updated_at: "2026-06-11"
+    max_estimated_request_cost_cny: 5.0
+
+  mimo:
+    adapter: openai_compatible
+    base_url: "https://api.xiaomimimo.com/v1"
+    model: "mimo-v2.5"
+    api_key_env: MIMO_API_KEY
+    max_tokens: 1200
+    request_options:
+      temperature: 0.2
+    pricing:
+      input_per_million_cny: 1.0
+      output_per_million_cny: 2.0
+      context_window: 262144
+      updated_at: "2026-06-11"
+    max_estimated_request_cost_cny: 5.0
+
+  kimi:
+    adapter: openai_compatible
+    base_url: "https://api.moonshot.cn/v1"
+    model: "kimi-k2.6"
+    api_key_env: MOONSHOT_API_KEY
+    max_tokens: 300
+    request_options:
+      temperature: 0.2
+
+  qwen:
+    adapter: openai_compatible
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    model: "qwen3-vl-flash"
+    api_key_env: DASHSCOPE_API_KEY
+    max_tokens: 300
+    request_options:
+      temperature: 0.2
+
+  doubao:
+    adapter: openai_compatible
+    base_url: "https://ark.cn-beijing.volces.com/api/v3"
+    model: "YOUR_ENDPOINT_ID"
+    api_key_env: ARK_API_KEY
+    max_tokens: 300
+    request_options:
+      temperature: 0.2
+
+  ollama:
+    adapter: openai_compatible
+    base_url: "http://localhost:11434/v1"
+    model: "llama3.2-vision"
+    api_key_required: false
+    max_tokens: 300
+    request_options:
+      temperature: 0.2
+
+max_image_px: 1568
+name_max_len: 30
+workers: 2
+categories: [代码, 报错, 聊天记录, 网页文章, 文档, 设计图, 数据图表,
+             购物订单, 设置页面, 社交媒体, 视频截图, 游戏, 地图, 其他]
